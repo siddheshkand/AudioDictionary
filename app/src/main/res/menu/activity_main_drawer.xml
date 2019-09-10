@@ -10,7 +10,7 @@
             android:title="@string/bookmark" />
     </group>
 
-    <item android:title="Network">
+    <item android:title="@string/network">
         <menu>
             <item
                 android:id="@+id/nav_rate"
@@ -22,16 +22,16 @@
                 android:title="@string/share" />
         </menu>
     </item>
-    <item android:title="Others">
+    <item android:title="@string/others">
         <menu>
             <item
                 android:id="@+id/nav_help"
                 android:icon="@drawable/ic_help"
-                android:title="Help" />
+                android:title="@string/help" />
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_info"
-                android:title="About" />
+                android:title="@string/about" />
         </menu>
     </item>
 

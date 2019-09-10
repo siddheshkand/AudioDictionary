@@ -5,5 +5,10 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:showAsAction="never">
+        <menu>
+            <item android:title="@string/english" />
+            <item android:title="@string/marathi" />
+        </menu>
+    </item>
 </menu>
