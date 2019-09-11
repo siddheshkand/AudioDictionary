@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -24,6 +25,7 @@ import android.view.Menu;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    MenuItem menuSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Sending Feature Mail", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -57,7 +59,27 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        menuSetting = menu.findItem(R.id.action_settings);
+
+        String id = Global.getState(this, "dictionary_type");
+        if (id != null)
+            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
+
         return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        Global.saveState(this, "dictionary_type", String.valueOf(id));
+        if (id == R.id.english) {
+            menuSetting.setIcon(getDrawable(R.drawable.ic_english));
+        } else if (id == R.id.marathi) {
+            menuSetting.setIcon(getDrawable(R.drawable.ic_marathi));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
